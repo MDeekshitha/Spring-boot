@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+public class MenuApp {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        MathOperations math = new MathOperations();
+        char choice;
+
+        do {
+            System.out.println("\n********** MATH MENU **********");
+            System.out.println("1. Print Table of a Number");
+            System.out.println("2. Calculate Factorial");
+            System.out.println("3. Check Prime Number");
+            System.out.println("4. Print Fibonacci Series");
+            System.out.println("5. Exit");
+            System.out.println("*******************************");
+            System.out.print("Enter your choice: ");
+            int option = scanner.nextInt();
+
+            switch (option) {
+                case 1:
+                    System.out.print("Enter the number: ");
+                    int tableNum = scanner.nextInt();
+                    math.printTable(tableNum);
+                    break;
+
+                case 2:
+                    System.out.print("Enter the number: ");
+                    int factNum = scanner.nextInt();
+                    long factorial = math.calculateFactorial(factNum);
+                    System.out.println("Factorial of " + factNum + " is " + factorial);
+                    break;
+
+                case 3:
+                    System.out.print("Enter the number: ");
+                    int primeNum = scanner.nextInt();
+                    if (math.checkPrime(primeNum))
+                        System.out.println(primeNum + " is a prime number.");
+                    else
+                        System.out.println(primeNum + " is not a prime number.");
+                    break;
+
+                case 4:
+                    System.out.print("Enter number of terms: ");
+                    int terms = scanner.nextInt();
+                    math.printFibonacci(terms);
+                    break;
+
+                case 5:
+                    System.out.println("Exiting the program. Goodbye!");
+                    return;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+
+            System.out.print("\nBack to Menu? (Y/N): ");
+            choice = scanner.next().charAt(0);
+
+        } while (choice == 'Y' || choice == 'y');
+        scanner.close();
+        System.out.println("Thank you for using the Math App!");
+    }
+}
